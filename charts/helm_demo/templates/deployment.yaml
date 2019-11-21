@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helm-demo-deployment
+  labels:
+    app: helm-demo-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helm-demo-pod
+  template:
+    metadata:
+      labels:
+        app: helm-demo-pod
+    spec:
+      containers:
+      - name: helmdemogo
+        image: helm_demo_go:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080

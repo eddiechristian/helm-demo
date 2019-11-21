@@ -1,0 +1,3 @@
+postgresql:
+  postgresqlUsername: postgres
+  postgresqlPassword: postgres12  

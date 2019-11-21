@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: helm-demo-service
+spec:
+  type: NodePort
+  selector:
+    app: helm-demo-pod
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
