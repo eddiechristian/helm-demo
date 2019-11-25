@@ -27,9 +27,10 @@ func main() {
         fmt.Fprintf(w, "Ip %s processing request\n", GetLocalIP())
     })
 
-    http.HandleFunc("/greet/", func(w http.ResponseWriter, r *http.Request) {
-        name := r.URL.Path[len("/greet/"):]
-        fmt.Fprintf(w, "Hello %s\n", name)
+    http.HandleFunc("/employee/", func(w http.ResponseWriter, r *http.Request) {
+        name := r.URL.Path[len("/employee/"):]
+        fmt.Fprintf(w, "Ip %s processing request\n", GetLocalIP())
+        fmt.Fprintf(w, "employee %s\n", name)
     })
 
     http.ListenAndServe(":8080", nil)

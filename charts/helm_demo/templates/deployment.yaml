@@ -5,7 +5,7 @@ metadata:
   labels:
     app: helm-demo-deployment
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: helm-demo-pod
@@ -13,6 +13,9 @@ spec:
     metadata:
       labels:
         app: helm-demo-pod
+    annotations:
+      # The field we'll use to couple our ConfigMap and Deployment
+      configHash: ""
     spec:
       containers:
       - name: helmdemogo
@@ -20,3 +23,6 @@ spec:
         imagePullPolicy: Never
         ports:
         - containerPort: 8080
+        envFrom:
+          - configMapRef:
+            name: helm-demo-configmap

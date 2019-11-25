@@ -9,11 +9,11 @@ test:
 
 install-helm-demo:
 	kubectl config use-context docker-for-desktop
-	helm install -n helm-demo --wait ./charts/helm_demo/
+	helm install -n helm-demo --namespace helm-demo --wait ./charts/helm_demo/
 
 delete-helm_demo:
 	helm del --purge helm-demo
-	kubectl delete pvc data-helm-demo-postgresql-0
+	kubectl delete pvc data-helm-demo-postgresql-0 -n helm-demo
 
 deploy-helm-demo-db:
 	kubectl cp db.sql default/helm-demo-postgresql-0:/tmp/db.sql
