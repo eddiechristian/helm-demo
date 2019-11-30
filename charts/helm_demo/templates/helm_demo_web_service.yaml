@@ -3,7 +3,8 @@ kind: Service
 metadata:
   name: helm-demo-service
 spec:
-  type: NodePort
+  type: LoadBalancer
+  clusterIP: {{.Values.clusterIP}}
   selector:
     app: helm-demo-pod
   ports:

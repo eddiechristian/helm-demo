@@ -4,6 +4,8 @@ import (
     "fmt"
     "net/http"
     "net"
+    "database/sql"
+    _ "github.com/lib/pq"
 )
 
 func GetLocalIP() string {

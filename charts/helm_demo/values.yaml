@@ -1,3 +1,6 @@
 postgresql:
   postgresqlUsername: postgres
-  postgresqlPassword: postgres12  
+  postgresqlPassword: postgres12
+  service:
+    clusterIP: "10.105.164.94"
+clusterIP: "10.111.77.216"

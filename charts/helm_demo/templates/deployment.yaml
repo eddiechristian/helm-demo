@@ -13,9 +13,8 @@ spec:
     metadata:
       labels:
         app: helm-demo-pod
-    annotations:
-      # The field we'll use to couple our ConfigMap and Deployment
-      configHash: ""
+      annotations:
+        configHash: 2aaa726da1dad8655fe42cbb53ef593d
     spec:
       containers:
       - name: helmdemogo
@@ -24,5 +23,5 @@ spec:
         ports:
         - containerPort: 8080
         envFrom:
-          - configMapRef:
+        - configMapRef: 
             name: helm-demo-configmap

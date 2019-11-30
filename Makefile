@@ -4,16 +4,19 @@ build:
 docker:
 	docker build -t helm_demo_go .
 
-test:
-	docker run --rm -p 8080:9990 helm_demo_go:latest 
-
 install-helm-demo:
 	kubectl config use-context docker-for-desktop
 	helm install -n helm-demo --namespace helm-demo --wait ./charts/helm_demo/
 
-delete-helm_demo:
+test:
+	yq w --inplace charts/helm_demo/templates/configmap.yaml data.pghost $(shell kubectl get svc -n helm-demo helm-demo-postgresql -o json | jq -r '.spec.clusterIP')
+	yq w --inplace charts/helm_demo/templates/deployment.yaml spec.template.metadata.annotations.configHash $(shell cat charts/helm_demo/templates/configmap.yaml | md5)
+delete-helm-demo:
 	helm del --purge helm-demo
 	kubectl delete pvc data-helm-demo-postgresql-0 -n helm-demo
+
+configure-metallb:
+	kubectl get po -l app=helm-demo-pod -n helm-demo -o json | jq '.items[] | { podip: .status.podIP}'
 
 deploy-helm-demo-db:
 	kubectl cp db.sql default/helm-demo-postgresql-0:/tmp/db.sql
