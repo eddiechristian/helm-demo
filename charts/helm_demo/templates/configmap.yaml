@@ -7,3 +7,4 @@ data:
   pgport: "5432"
   pguser: postgres
   pgpwd: postgres12
+  GOPATH: "/root/work/"
