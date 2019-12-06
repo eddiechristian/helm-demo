@@ -5,4 +5,4 @@ CREATE TABLE account(
 );
 insert into account(username, password, email) values('ed.c', '12345', 'eddie.christian@iron.net');
 insert into account(username, password, email) values('bill.d', '12345', 'bill.davis@iron.net');
-insert into account(username, password, email) values('mike.v', '12345', 'mike.vick@iron.net');
+insert into account(username, password, email) values('frank.b', '12345', 'frank.beamer@iron.net');
